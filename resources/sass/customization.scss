@@ -1,0 +1,308 @@
+
+// Fonts
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+// global
+.gray-border-bottom{
+    border-bottom: 1px solid #bbbbbb;
+}
+.btn-radius-5{
+    border-radius: 50px;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+
+// logo
+.logo{
+    max-height: 120px;
+    margin: 0 auto;
+    width: 90px;
+    height: 120px;
+    padding: 5px 0;
+    @media only screen and (max-width:991.98px){
+        width: 80px;
+        height: 100px;
+    }
+    @media only screen and (max-width:767.98px){
+        width: 70px;
+        height: 90px;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+// menu
+.main-menu {
+    nav{
+        >ul{
+            >li{
+                >ul.submenu{
+                    width: 365px;
+                }
+            }
+        }
+    }
+    li {
+        a{
+            font-weight: 500;
+            font-size: 16px;
+            &.main-menu-1{
+                padding-top: 40px;
+                line-height: 80px;
+            }
+        }
+    }
+}
+//product
+.product-wrapper{
+    .product-img{
+        position: relative;
+        &::after{
+            background: #000 none repeat scroll 0 0;
+            bottom: 0;
+            content: "";
+            height: 100%;
+            left: 50%;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            transform: translateX(-50%) scale(0.5);
+            transition: all 0.3s ease 0s;
+            width: 100%;
+            
+        }
+    }
+    &:hover{
+        .product-img{
+            &::after{
+                opacity: 0.47;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+    }
+}
+// category
+.cate-padding-1{
+    .single-food-content > h3{
+        padding: 15px 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }   
+}
+.footer-widget{
+    .title-contact{
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+    ul{
+        li{
+            list-style: none;
+            margin-bottom: 10px;
+            i{
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+.newsletter-title{
+    line-height: 45px;
+    text-align: center;
+    >span{
+        font-size: 25px;
+    }
+    >i{
+        font-size: 25px;
+        margin-right: 15px;
+    }
+}
+// menu sidebar 
+#sidebar{
+    ul.slidebar-menu{
+        li{
+            a{
+                color: #333;
+                display: block;
+                font-size: 14px;
+                display: block;
+                border-bottom: 1px solid #cecece;
+                padding: 10px 0;
+                &:hover{
+                    color: #7e4c4f;
+                    padding-left: 5px;
+                }
+                &.menu-dropdown-toggle{
+                    position: relative;
+                    &::after{
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        -webkit-transform: translateY(-50%);
+                        -ms-transform: translateY(-50%);
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+            >ul{
+                margin-left: 10px;
+            }
+        }
+    }
+}
+.price_filter{
+    .btn-outline-secondary{
+        color: #383838;
+        text-transform: uppercase;
+        &:hover{
+            background-color: #7e4c4f;
+            border-color: #7e4c4f;
+            color: #ffffff;
+        }
+    }
+}
+// slide image product
+.product-details-img{
+    .owl-carousel {
+        .owl-item{
+            img{
+                height: 500px!important;
+                margin-bottom: 30px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+}
+.in-stock{
+    margin: 20px 0 8px;
+}
+.product-list-action-left {
+    a{
+        &:hover{
+            background-color: #bbbbbb;
+            color: #484848;
+        }
+    }
+}
+#scrollUp{
+    &:hover{
+        background-color: #bbbbbb;
+        color: #484848;
+    }
+}
+.breadcrumb-content {
+    >h2{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: normal;
+        color: #444444;
+    }
+}
+.blog-project{
+    .blog-img{
+            height: 500px;
+            width: 100%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+// construction 
+.single-food-hover-2{
+    height: 210px;
+    > img{
+        height: 100%;
+    }
+}
+.product-img{
+    height: 180px;
+    img{
+        height: 100%;
+    }
+}
+.blog-img{
+    height: 310px;
+    img{
+        height: 100%;
+    }
+}
+.dec-img{
+    height: 453px;
+    >img{
+        height: 100%;
+    }
+}
+// pagination
+.pagination-style{
+    .page-item{
+        .page-link{
+            background-color: transparent;
+            border: 1px solid #7e4c4f;
+            color: #7e4c4f;
+            display: inline-block;
+            font-size: 13px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            width: 40px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+        &.active{
+            span.page-link{
+                background-color: #7e4c4f;
+                color: #ffffff;
+            }
+        }
+    }
+}
+// search
+.custom-search-content{
+    position: relative;
+    padding-top: 30px;
+    input{
+        border-radius: 50px;
+        padding-right: 40px;
+    }
+    button{
+        border: none;
+        font-size: 18px;
+        position: absolute;
+        right: 5px;
+        bottom: 6px;
+        background: none;
+    }
+}
+// phone 
+.phone-contact{
+    text-align: right;
+    .icon-phone{
+        position: relative;
+        font-size: 18px;
+        font-weight: 500;
+        &::before{
+            position: absolute;
+            top: 0px;
+            left: -25px;
+        }
+    }
+}
+@media only screen and (max-width:992px){
+    .custom-search-content{
+        position: absolute;
+        top: 25px;
+        padding: 0;
+        right: 55px;
+        display: flex;
+        align-items: center;
+        .phone-contact{
+            margin-right: 10px;
+        }
+    }
+}
