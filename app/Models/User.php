@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Sortable;
+
     const SUPERADMIN = 'superadmin';
     const ADMIN = 'admin';
     const CLIENT = 'client';
@@ -39,6 +42,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    public $sortable = [
+        'id', 'name', 'email',
     ];
 
     public function orders()

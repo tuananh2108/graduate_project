@@ -11,7 +11,7 @@ class NewsController extends Controller
 {
     public function index(Request $request)
     {
-        $news = News::where("title", "like", "%".$request->q."%")
+        $news = News::sortable()->where("title", "like", "%".$request->q."%")
                                      ->orWhere("content", "like", "%".$request->q."%")
                                      ->paginate(4);
 

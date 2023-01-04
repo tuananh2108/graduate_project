@@ -33,7 +33,7 @@
 					<div class="panel-body">
                         <table class="table table-order">
                             <tr>
-                                <td><strong>Mã đơn hàng: </strong>{{ $order->id }}</td>
+                                <td><strong>Mã đơn hàng: </strong>{{ $order->order_code }}</td>
                                 <td><strong>Ngày đặt hàng: </strong>{{ $order->order_date }}</td>
                             </tr>
                             <tr>

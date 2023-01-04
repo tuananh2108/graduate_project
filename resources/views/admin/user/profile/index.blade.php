@@ -26,6 +26,14 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-12 col-lg-12">
 				<div class="panel panel-primary">
+					@if (session('message'))
+						<div class="alert bg-success" role="alert">
+							<svg class="glyph stroked checkmark">
+								<use xlink:href="#stroked-checkmark"></use>
+							</svg>{{ session('message') }}<a href="{{ asset('admin/user/profile/'.$user->id) }}" class="pull-right"><span
+									class="glyphicon glyphicon-remove"></span></a>
+						</div>
+					@endif
 					<div class="panel-body">
 						<form method="post">
 							@csrf

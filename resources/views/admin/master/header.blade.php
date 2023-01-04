@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><span>Store </span>Admin</a>
+			<a class="navbar-brand" href=@if(Auth::user()->role == App\Models\User::SUPERADMIN) "admin/dashboard" @else "admin/category" @endif><span>Store </span>Admin</a>
 			<ul class="user-menu">
 				<li class="dropdown pull-right">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">

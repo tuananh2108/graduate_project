@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Order extends Model
 {
+    use Sortable;
+
     protected $table = 'orders';
     public $timestamps = false;
     const PENDING = 'pending';
@@ -19,6 +22,10 @@ class Order extends Model
 
     protected $casts = [
         'order_date' => 'datetime',
+    ];
+
+    public $sortable = [
+        'id', 'total', 'status', 'user.name'
     ];
 
     public function products()

@@ -12,7 +12,7 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        $projects = Project::where("name", "like", "%".$request->q."%")
+        $projects = Project::sortable()->where("name", "like", "%".$request->q."%")
                            ->orWhere("detail", "like", "%".$request->q."%")
                            ->orderBy("id", "DESC")->paginate(4);
 

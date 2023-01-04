@@ -31,7 +31,6 @@
 	<script src="{{ asset('/admin/js/easypiechart.js') }}"></script>
 	<script src="{{ asset('/admin/js/easypiechart-data.js') }}"></script>
     <script src="{{ asset('/admin/js/bootstrap-datepicker.js') }}"></script>
-    {{-- <script src="{{ asset('/admin/js/validation.js') }}"></script> --}}
     <script>
         function changeImg(input, avatar) {
             //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới

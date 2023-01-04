@@ -36,6 +36,11 @@
     @endif
 
     <div class="row">
+      <div class="col-lg-12">
+        @if(empty($costs))
+          <a href="{{ asset('admin/cost/add') }}" class="btn btn-primary">Thêm mới</a>
+        @endif
+      </div>
       @foreach ($costs as $cost)
         <div class="shop-area pt-50 pb-100 blog-project">
           <div class="container">

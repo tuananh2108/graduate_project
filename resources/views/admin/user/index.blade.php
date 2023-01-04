@@ -45,9 +45,9 @@
 								<table class="table table-bordered" style="margin-top:20px;">
 									<thead>
 										<tr class="bg-primary">
-											<th>ID</th>
-											<th>Họ tên</th>
-											<th>Email đăng nhập</th>
+											<th>@sortablelink('id', 'ID', [], ['class' => 'sortable-link'])</th>
+											<th>@sortablelink('name', 'Họ tên', [], ['class' => 'sortable-link'])</th>
+											<th>@sortablelink('email', 'Email đăng nhập', [], ['class' => 'sortable-link'])</th>
 											<th>Vai trò</th>
 											<th width='16%'>Tùy chọn</th>
 										</tr>

@@ -49,7 +49,7 @@
                       <th rowspan="2">@sortablelink('id', 'ID', [], ['class' => 'sortable-link'])</th>
                       <th colspan="3" class="text-center">Thông tin sản phẩm</th>
                       <th rowspan="2">@sortablelink('total', 'Tổng thanh toán', [], ['class' => 'sortable-link'])</th>
-                      <th rowspan="2">@sortablelink('name', 'Khách hàng', [], ['class' => 'sortable-link'])</th>
+                      <th rowspan="2">@sortablelink('user.name', 'Khách hàng', [], ['class' => 'sortable-link'])</th>
                       <th rowspan="2">@sortablelink('status', 'Trạng thái', [], ['class' => 'sortable-link'])</th>
                       <th rowspan="2">Tùy chọn</th>
                     </tr>

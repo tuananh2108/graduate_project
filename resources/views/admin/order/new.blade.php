@@ -42,6 +42,8 @@
                     <i>Email phải là một địa chỉ hợp lệ</i>
                   </div>
                 </div>
+              </div>
+              <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Số diện thoại (*)</label>
@@ -65,7 +67,7 @@
               </div>
               <input type="hidden" name="list_product_order" id="list_product_order">
               <div style="margin-top: 20px; text-align:right;">
-                <input type="submit" value="Tạo hóa đơn" class="btn btn-primary">
+                <input type="submit" value="Tạo hóa đơn" id="btn-order" class="btn btn-primary">
               </div>
             </form>
             <hr style="border-color: #999">
@@ -134,12 +136,43 @@
 
 @section('script')
   @parent
+  <script src="{{ asset('/admin/js/validation.js') }}"></script>
   <script>
-    // $(document).ready(function() {
-    //   localStorage.setItem("infoOder", [$('input[name="name"').val(), $('input[name="email"').val(), $('input[name="phone_number"').val(), $('input[name="order_total"').val(), $('input[name="address"').val()]);
-    // });
+    // Customer info
+    let customer_info = localStorage.getItem("customer_info") ? JSON.parse(localStorage.getItem("customer_info")) : [];
+    $('input[name="name"]').change((e) => {
+      customer_info_fnc('name', e.target.value)
+    })
+    $('input[name="email"]').change((e) => {
+      customer_info_fnc('email', e.target.value)
+    })
+    $('input[name="phone_number"]').change((e) => {
+      customer_info_fnc('phone_number', e.target.value)
+    })
+    $('input[name="address"]').change((e) => {
+      customer_info_fnc('address', e.target.value)
+    })
 
-    let cart = [];
+    function customer_info_fnc(type, value) {
+      if(!customer_info.length) {
+        customer_info.push({[type]: value});
+      }
+      else {
+        customer_info.map(element => {
+          if (type == "name" && element.name) element.name = value;
+          else if (type == "email" && element.email) element.email = value;
+          else if (type == "phone_number" && element.phone_number) element.phone_number = value;
+          else if (type == "address" && element.address) element.address = value;
+          else customer_info.push({[type]: value});
+        })
+      }
+
+      customer_info = uniqueValueCart(customer_info);
+      localStorage.setItem("customer_info", JSON.stringify(customer_info));
+    }
+
+    // Cart
+    let cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
     let selectProducts = $('.select-product');
     for(let i = 0; i < selectProducts.length; i++)
     {
@@ -187,10 +220,8 @@
       }
 
       cart = uniqueValueCart(cart);
-      
-      totalOrder(cart);
 
-      $('#list_product_order').val(JSON.stringify(cart));
+      totalOrder(cart);
 
       insertLocalStorage(cart);
     }
@@ -208,23 +239,23 @@
     // Lưu cart vào localstorage
     function insertLocalStorage(array)
     {
-      if(localStorage.getItem("cart")) {
-        cartStorage = JSON.parse(localStorage.getItem("cart"));
-        array.map((element) => {
-          cartStorage.map(item => {
-            item.product_id == element.product_id ? item.quantity = element.quantity : cartStorage.push(element);
-          });
-        });
-        array = uniqueValueCart(cartStorage);
-      }
-
+      $('#list_product_order').val(JSON.stringify(array));
       localStorage.setItem("cart", JSON.stringify(array));
     }
 
     // re-render table when do not submit form
     function reRender(input, type)
     {
-      let cart = JSON.parse(localStorage.getItem("cart"));
+      // render customer info
+      if(customer_info)
+      {
+        if(customer_info[0]) $('input[name="name"]').val(customer_info[0].name);
+        if(customer_info[1]) $('input[name="email"]').val(customer_info[1].email);
+        if(customer_info[2]) $('input[name="phone_number"]').val(customer_info[2].phone_number);
+        if(customer_info[3]) $('input[name="address"]').val(customer_info[3].address);
+      }
+
+      // render cart
       if(cart)
       {
         for(let index = 0; index < cart.length; index++)
@@ -240,6 +271,10 @@
             }
           }
         }
+
+        totalOrder(cart);
+  
+        $('#list_product_order').val(JSON.stringify(cart));
       }
     }
 
@@ -248,5 +283,9 @@
     {
       return uniqueObjects = Array.from(new Set(array.map(element => JSON.stringify(element)))).map(element => JSON.parse(element));
     }
+
+    $('#btn-order').click(() => {
+      localStorage.clear();
+    })
   </script>
 @endsection

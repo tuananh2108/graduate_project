@@ -13,3 +13,6 @@
   $ php artisan db:seed
   $ php artisan serve
   ```
+## 6. Để truy cập trang admin, sử dụng 1 trong 2 account sau:
+  - account super admin (chủ cửa hàng): email: super-admin@cnc-store.com, password: 123456
+  - account admin (nhân viên): email: admin@cnc-store.com, password: 123456
