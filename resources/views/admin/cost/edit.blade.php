@@ -1,6 +1,6 @@
 @extends('admin.master.master')
 
-@section('title', 'Chỉnh sửa bảng giá')
+@section('title', 'Chỉnh sửa bảng giá cải tạo và sữa chửa nhà')
 
 @section('cost')
     class="active"
@@ -17,7 +17,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="active">Bảng giá</li>
+                <li class="active">Bảng giá cải tạo và sữa chửa nhà</li>
             </ol>
         </div>
         <div class="box box-default">
@@ -39,7 +39,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nội dung (*)</label>
-                                <textarea name="detail" class="form-control" placeholder="Nhập vào nội dung" required>{{ json_decode($cost->details)[0] }}</textarea>
+                                <textarea name="detail" class="form-control" placeholder="Nhập vào nội dung" required>{{ json_decode($cost->detail)[0] }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Ảnh báo giá chính (*)</label>
@@ -48,13 +48,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Nội dung phụ</label>
-                                <textarea name="detail2" class="form-control" placeholder="Nhập vào nội dung">{{ json_decode($cost->details)[1] }}</textarea>
+                                <textarea name="detail2" class="form-control" placeholder="Nhập vào nội dung">{{ json_decode($cost->detail)[1] }}</textarea>
                             </div>
                             <div class="form-group">
                                 <div class="form-group">
                                     <label>Ảnh báo giá phụ</label>
-                                    <input id="img2" type="file" name="cost_img2" class="form-control hidden" onchange="changeImg(this, '#avatar1')">
-                                    <img id="avatar2" class="thumbnail" width="100%" height="350px" src="{{ asset('img/cost/'.json_decode($cost->img)[1]) }}" onclick="clickChangeImg('#img1')">
+                                    <input id="img2" type="file" name="cost_img2" class="form-control hidden" onchange="changeImg(this, '#avatar2')">
+                                    <img id="avatar2" class="thumbnail" width="100%" height="350px" src="{{ asset('img/cost/'.json_decode($cost->img)[1]) }}" onclick="clickChangeImg('#img2')">
                                 </div>
                             </div>
                         </div>

@@ -53,7 +53,7 @@
                                     </div>
                                 @endif
                                 <input id="img" type="file" name="construction_img" class="form-control hidden" onchange="changeImg(this, '#avatar')">
-                                <img id="avatar" class="thumbnail" width="60%" height="200px" src="{{ asset('img/import-img.png') }}" onclick="clickChangeImg('#img')">
+                                <img id="avatar" class="thumbnail" width="60%" height="200px" src="{{ asset('img/no-img.jpg') }}" onclick="clickChangeImg('#img')">
                             </div>
                             <div class="form-group">
                                 <label>Nội dung phụ</label>
@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <label>Ảnh phụ của công trình</label>
                                 <input id="img1" type="file" name="construction_img2" class="form-control hidden" onchange="changeImg(this, '#avatar1')">
-                                <img id="avatar1" class="thumbnail" width="60%" height="200px" src="{{ asset('img/import-img.png') }}" onclick="clickChangeImg('#img1')">
+                                <img id="avatar1" class="thumbnail" width="60%" height="200px" src="{{ asset('img/no-img.jpg') }}" onclick="clickChangeImg('#img1')">
                             </div>
                         </div>
                     </div>

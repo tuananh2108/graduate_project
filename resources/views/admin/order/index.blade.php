@@ -69,7 +69,7 @@
                           <td>{{ number_format($products->first()['price'], 0, '', '.') }} VND</td>
                           <td>{{ $products->first()['pivot']['quantity'] }}</td>
                           <td rowspan="{{ count($products) }}">{{ number_format($order->total, 0, '', '.') }} VND</td>
-                          <td rowspan="{{ count($products) }}">{{ $order->user->name }}</td>
+                          <td rowspan="{{ count($products) }}">{{ $order->user_name }}</td>
                           <td rowspan="{{ count($products) }}">
                             @if ($order->status == 'active')
                               <a class="btn btn-success" role="button">Hoạt động</a>

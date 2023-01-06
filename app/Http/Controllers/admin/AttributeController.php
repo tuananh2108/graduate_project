@@ -37,7 +37,7 @@ class AttributeController extends Controller
         $attribute->name = $request->name;
         $attribute->save();
 
-        return redirect()->back()->with('message', 'Đã sửa thành công');
+        return redirect('admin/product/attribute')->with('message', 'Đã sửa thành công');
     }
 
     public function destroy($id)

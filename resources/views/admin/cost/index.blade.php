@@ -37,7 +37,7 @@
 
     <div class="row">
       <div class="col-lg-12">
-        @if(empty($costs))
+        @if(count($costs) < 1)
           <a href="{{ asset('admin/cost/add') }}" class="btn btn-primary">Thêm mới</a>
         @endif
       </div>
@@ -58,7 +58,7 @@
                       <div class="row justify-content-md-center">
                         <div class="col-md-6 col-sm-6">
                           <div class="dec-img">
-                            <img src="{{ asset('img/cost/' . json_decode($cost->img)[0]) }}" alt="">
+                            <img src="{{ asset('img/cost/' . json_decode($cost->img)[1]) }}" alt="">
                           </div>
                         </div>
                       </div>

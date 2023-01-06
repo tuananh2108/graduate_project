@@ -12,8 +12,9 @@ class NewsController extends Controller
     public function index(Request $request)
     {
         $news = News::sortable()->where("title", "like", "%".$request->q."%")
-                                     ->orWhere("content", "like", "%".$request->q."%")
-                                     ->paginate(4);
+                                ->orWhere("content", "like", "%".$request->q."%")
+                                ->orderBy("id", "desc")
+                                ->paginate(4);
 
         return view('admin.news.index', ["news" => $news]);
     }

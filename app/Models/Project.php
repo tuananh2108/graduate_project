@@ -10,7 +10,6 @@ class Project extends Model
     use Sortable;
 
     protected $table = 'projects';
-    public $timestamps = false;
 
     protected $fillable = [
         'name', 'detail', 'img',

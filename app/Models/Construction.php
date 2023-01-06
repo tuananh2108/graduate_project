@@ -10,7 +10,6 @@ class Construction extends Model
     use Sortable;
 
     protected $table = 'constructions';
-    public $timestamps = false;
 
     protected $fillable = [
         'name', 'detail', 'img',

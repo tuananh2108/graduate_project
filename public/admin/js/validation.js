@@ -21,7 +21,7 @@ if (hidePasswordIcon) {
 
 
 const patterns = {
-  name: /^[\D\s]*$/i,
+  name: /^[a-z]*$/i,
   email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
   password: /^[\w@_-]{6,20}$/i,
   phone_number: /^(03|08|09)\d{8}$/,

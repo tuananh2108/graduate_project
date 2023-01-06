@@ -10,13 +10,13 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#">
+				<li><a>
 					<svg class="glyph stroked home">
 							<use xlink:href="#stroked-home"></use>
 						</svg>
 					</a>
 				</li>
-				<li class="active">Danh mục/Thuộc tính/Sửa giá trị của tính</li>
+				<li class="active">Thuộc tính/Sửa giá trị của thuộc tính</li>
 			</ol>
 		</div>
 
@@ -25,7 +25,7 @@
 				<div class="panel panel-blue">
 					<form  method="post">
 						@csrf
-						<div class="panel-heading dark-overlay">Sửa giá trị của tính</div>
+						<div class="panel-heading dark-overlay">Sửa giá trị của thuộc tính</div>
 						<div class="panel-body">
 							@if (session('message'))
 								<div class="alert alert-success" role="alert">

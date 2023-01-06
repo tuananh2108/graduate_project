@@ -10,7 +10,6 @@ class Product extends Model
     use Sortable;
 
     protected $table = 'products';
-    public $timestamps = false;
     const AVAILABLE = 'available';
     const UNAVAILABLE = 'unavailable';
 
@@ -29,12 +28,7 @@ class Product extends Model
 
     public function values()
     {
-        return $this->belongsToMany('App\Models\Value', 'value_product', 'product_id', 'value_id'); //(product_id,values_id đều nằm trong bảng chung gian)
-    }
-
-    public function variant()
-    {
-        return $this->hasMany('App\Models\Variant', 'product_id', 'id');
+        return $this->belongsToMany('App\Models\Value', 'value_product', 'product_id', 'value_id');
     }
 
     public function orders()

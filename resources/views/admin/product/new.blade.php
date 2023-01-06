@@ -70,14 +70,19 @@
                                         <div class="col-md-5 col-xs-4">
                                             <div class="panel panel-default">
                                                 <div class="panel-body tabs" style="width: 500px; padding-left: 183px; ">
-                                                    @if ($errors->has('attr_name'))
+                                                    @if ($errors->has('attribute_name'))
                                                         <div class="alert alert-danger" role="alert">
-                                                        <strong>{{ $errors->first('attr_name') }}</strong>
+                                                        <strong>{{ $errors->first('attribute_name') }}</strong>
                                                         </div>
                                                     @endif
                                                     @if (session('message'))
                                                         <div class="alert alert-success" role="alert">
                                                             <strong>{{ session('message') }}</strong>
+                                                        </div>
+                                                    @endif
+                                                    @if (session('error-message'))
+                                                        <div class="alert alert-danger" role="alert">
+                                                            <strong>{{ session('error-message') }}</strong>
                                                         </div>
                                                     @endif
                                                     <label>
@@ -136,7 +141,7 @@
                                                                 @csrf
                                                                 <div class="form-group">
                                                                     <label for="">Tên thuộc tính mới</label>
-                                                                    <input type="text" class="form-control" name="attr_name" aria-describedby="helpId" placeholder="">
+                                                                    <input type="text" class="form-control" name="attribute_name" aria-describedby="helpId" placeholder="">
                                                                 </div>
 
                                                                 <button type="submit" name="add_pro" class="btn btn-success">
@@ -165,22 +170,22 @@
                                                             <strong>{{ $errors->first('product_img') }}</strong>
                                                         </div>
                                                     @endif
-                                                    <input id="img" type="file" name="product_img" class="form-control hidden" onchange="changeImg(this)">
-                                                    <img id="avatar" class="thumbnail" width="100%" height="250px" src="{{ asset('img/import-img.png') }}">
+                                                    <input id="img" type="file" name="product_img" class="form-control hidden" onchange="changeImg(this, '#avatar')">
+                                                    <img id="avatar" class="thumbnail" width="100%" height="250px" src="{{ asset('img/no-img.jpg') }}" onclick="clickChangeImg('#img')">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #30a5ff;">Ảnh 2 của sản phẩm</label>
-                                                    <input id="img2" type="file" name="product_img2" class="form-control hidden" onchange="changeImg2(this)">
-                                                    <img id="avatar2" class="thumbnail" width="100%" height="250px" src="{{ asset('img/import-img.png') }}">
+                                                    <input id="img2" type="file" name="product_img2" class="form-control hidden" onchange="changeImg(this, '#avatar2')">
+                                                    <img id="avatar2" class="thumbnail" width="100%" height="250px" src="{{ asset('img/no-img.jpg') }}" onclick="clickChangeImg('#img2')">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #30a5ff;">Ảnh 3 của sản phẩm</label>
-                                                    <input id="img3" type="file" name="product_img3" class="form-control hidden" onchange="changeImg3(this)">
-                                                    <img id="avatar3" class="thumbnail" width="100%" height="250px" src="{{ asset('img/import-img.png') }}">
+                                                    <input id="img3" type="file" name="product_img3" class="form-control hidden" onchange="changeImg(this, '#avatar3')">
+                                                    <img id="avatar3" class="thumbnail" width="100%" height="250px" src="{{ asset('img/no-img.jpg') }}" onclick="clickChangeImg('#img3')">
                                                 </div>
                                             </div>
                                         </div>
@@ -244,63 +249,4 @@
             </div>
         </div>
     </div>
-@endsection
-    
-@section('script')
-    @parent
-    <script>
-		function changeImg(input) {
-            //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                //Sự kiện file đã được load vào website
-                reader.onload = function (e) {
-                    //Thay đổi đường dẫn ảnh
-                    $('#avatar').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $(document).ready(function () {
-            $('#avatar').click(function () {
-                $('#img').click();
-            });
-        });  
-
-        function changeImg2(input) {
-            //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                //Sự kiện file đã được load vào website
-                reader.onload = function (e) {
-                    //Thay đổi đường dẫn ảnh
-                    $('#avatar2').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $(document).ready(function () {
-            $('#avatar2').click(function () {
-                $('#img2').click();
-            });
-        });
-
-        function changeImg3(input) {
-            //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                //Sự kiện file đã được load vào website
-                reader.onload = function (e) {
-                    //Thay đổi đường dẫn ảnh
-                    $('#avatar3').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $(document).ready(function () {
-            $('#avatar3').click(function () {
-                $('#img3').click();
-            });
-        });
-	</script>
 @endsection

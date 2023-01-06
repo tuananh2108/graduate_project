@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $data['products'] = Product::sortable()->where("product_code", "like", "%".$request->q."%")
-                                    ->orWhere("name", "like", "%".$request->q."%")
+                                    ->orWhere("products.name", "like", "%".$request->q."%")
                                     ->orWhere("price", "like", "%".$request->q."%")
                                     ->orderBy("id", "DESC")->paginate(4);
         return view('admin.product.index', $data);
@@ -90,7 +90,8 @@ class ProductController extends Controller
         $product->save();
 
         //add values_product
-        $product->values()->Attach(Arr::collapse($request->value));
+        if(isset($request->value)) $product->values()->Attach(Arr::collapse($request->value));
+        else return redirect()->back()->with('error-message', 'Chưa thêm giá trị thuộc tính');
 
         return redirect('admin/product')->with('message', 'Đã thêm sản phẩm mới thành công!');;
     }
@@ -167,7 +168,8 @@ class ProductController extends Controller
         $product->save();
 
         //add values_product
-        $product->values()->Sync(Arr::collapse($request->value));
+        if(isset($request->value)) $product->values()->Sync(Arr::collapse($request->value));
+        else return redirect()->back()->with('error-message', 'Chưa thêm giá trị thuộc tính');
 
         return redirect('admin/product')->with('message', 'Đã sửa sản phẩm thành công!');
     }

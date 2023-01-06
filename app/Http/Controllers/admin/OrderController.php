@@ -13,13 +13,16 @@ class OrderController extends Controller
 {
     public function index(Request $request)
     {
-        $data['orders'] = Order::sortable()->join('users', 'users.id', '=', 'orders.user_id')
-                                ->join('product_order', 'product_order.order_id', '=', 'orders.id')
+        $data['orders'] = Order::sortable()->select("orders.id", "orders.total", "orders.status", "u.name as user_name")
+                                ->join('users as u', 'u.id', '=', 'orders.user_id')
+                                ->join('product_order', 'orders.id', '=', 'product_order.order_id')
                                 ->join('products', 'products.id', '=', 'product_order.product_id')
                                 ->where("order_code", "like", "%".$request->q."%")
-                                ->orWhere("users.name", "like", "%".$request->q."%")
+                                ->orWhere("u.name", "like", "%".$request->q."%")
                                 ->orWhere("products.name", "like", "%".$request->q."%")
-                                ->orderBy('order_date', 'DESC')->paginate(10);
+                                ->orderBy('order_date', 'DESC')
+                                ->groupBy("orders.id", "orders.total", "orders.status", "user_name")
+                                ->paginate(10);
         return view('admin.order.index', $data);
     }
 

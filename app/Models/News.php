@@ -10,7 +10,6 @@ class News extends Model
     use Sortable;
 
     protected $table = 'news';
-    public $timestamps = false;
     const SHOW = 'show';
     const HIDDEN = 'hidden';
 

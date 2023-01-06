@@ -46,8 +46,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Ảnh chính của tin tức</label>
-                                <input id="img" type="file" name="news_img" class="form-control hidden" onchange="changeImg(this)">
-                                <img id="avatar" class="thumbnail" width="60%" height="200px" src="{{ asset('img/news/'.json_decode($news->img)[0]) }}">
+                                <input id="img" type="file" name="news_img" class="form-control hidden" onchange="changeImg(this, '#avatar')">
+                                <img id="avatar" class="thumbnail" width="60%" height="200px" src="{{ asset('img/news/'.json_decode($news->img)[0]) }}" onclick="clickChangeImg('#img')">
                             </div>
                             <div class="form-group">
                                 <label>Nội dung phụ(*)</label>
@@ -55,8 +55,8 @@
                             </div>
                             <div class="form-group">
                                 <label>Ảnh phụ của tin tức</label>
-                                <input id="img1" type="file" name="news_img2" class="form-control hidden" onchange="changeImg1(this)">
-                                <img id="avatar1" class="thumbnail" width="60%" height="200px" src="{{ asset('img/news/'.json_decode($news->img)[1]) }}">
+                                <input id="img1" type="file" name="news_img2" class="form-control hidden" onchange="changeImg(this, '#avatar1')">
+                                <img id="avatar1" class="thumbnail" width="60%" height="200px" src="{{ asset('img/news/'.json_decode($news->img)[1]) }}" onclick="clickChangeImg('#img1')">
                             </div>
                         </div>
                     </div>

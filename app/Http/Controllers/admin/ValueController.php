@@ -32,7 +32,7 @@ class ValueController extends Controller
         $value->value = $request->name;
         $value->save();
 
-        return redirect()->back()->with('message', 'Đã sửa thành công');
+        return redirect('admin/product/attribute')->with('message', 'Đã sửa thành công');
     }
 
     public function destroy($id)

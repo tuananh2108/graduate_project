@@ -1,6 +1,6 @@
 @extends('admin.master.master')
 
-@section('title', 'Thêm bảo báo giá')
+@section('title', 'Thêm bảng giá cải tạo và sữa chửa nhà')
 
 @section('cost')
     class="active"
@@ -17,12 +17,12 @@
                         </svg>
                     </a>
                 </li>
-                <li class="active">Bảng báo giá</li>
+                <li class="active">Bảng giá cải tạo và sữa chửa nhà</li>
             </ol>
         </div>
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Thêm bảng báo giá </h3>
+                <h3 class="box-title">Thêm bảng giá</h3>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -42,14 +42,14 @@
                                 <textarea name="detail" class="form-control" placeholder="Nhập vào nội dung" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Ảnh chính của báo giá</label>
+                                <label>Ảnh chính của báo giá (*)</label>
                                 @if ($errors->has('cost_img'))
                                     <div class="alert alert-danger" role="alert">
                                         <strong>{{$errors->first('cost_img')}}</strong>
                                     </div>
                                 @endif
-                                <input id="img" type="file" name="cost_img" class="form-control hidden" onchange="changeImg(this, '#avatar')">
-                                <img id="avatar" class="thumbnail" width="60%" height="200px" src="{{ asset('img/import-img.png') }}" onclick="clickChangeImg('#img')">
+                                <input id="img" type="file" name="cost_img" class="form-control hidden" onchange="changeImg(this, '#avatar')" required>
+                                <img id="avatar" class="thumbnail" width="60%" height="200px" src="{{ asset('img/no-img.jpg') }}" onclick="clickChangeImg('#img')">
                             </div>
                             <div class="form-group">
                                 <label>Nội dung phụ của báo giá</label>
@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 <label>Ảnh phụ của báo giá</label>
                                 <input id="img1" type="file" name="cost_img2" class="form-control hidden" onchange="changeImg(this, '#avatar1')">
-                                <img id="avatar1" class="thumbnail" width="60%" height="200px" src="{{ asset('img/import-img.png') }}" onclick="clickChangeImg('#img1')">
+                                <img id="avatar1" class="thumbnail" width="60%" height="200px" src="{{ asset('img/no-img.jpg') }}" onclick="clickChangeImg('#img1')">
                             </div>
                         </div>
                     </div>

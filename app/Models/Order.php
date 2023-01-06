@@ -10,7 +10,6 @@ class Order extends Model
     use Sortable;
 
     protected $table = 'orders';
-    public $timestamps = false;
     const PENDING = 'pending';
     const DELIVERING = 'delivering';
     const DELIVERED = 'delivered';
@@ -25,7 +24,7 @@ class Order extends Model
     ];
 
     public $sortable = [
-        'id', 'total', 'status', 'user.name'
+        'id', 'total', 'status'
     ];
 
     public function products()

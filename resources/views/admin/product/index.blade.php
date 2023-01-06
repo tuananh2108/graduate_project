@@ -49,7 +49,7 @@
 											<th>@sortablelink('name', 'Thông tin sản phẩm', [], ['class' => 'sortable-link'])</th>
 											<th>@sortablelink('price', 'Đơn giá', [], ['class' => 'sortable-link'])</th>
 											<th>@sortablelink('status', 'Tình trạng', [], ['class' => 'sortable-link'])</th>
-											<th>@sortablelink('category_id', 'Danh mục', [], ['class' => 'sortable-link'])</th>
+											<th>@sortablelink('category.name', 'Danh mục', [], ['class' => 'sortable-link'])</th>
 											<th width='16%'>Tùy chọn</th>
 										</tr>
 									</thead>

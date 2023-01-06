@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $data['users'] = User::sortable()->where([['role', User::SUPERADMIN], ['name', 'like', '%'.$request->q.'%']])->orWhere([['role', User::ADMIN], ['name', 'like', '%'.$request->q.'%']])->orderBy('role')->paginate(4);
+        $data['users'] = User::where([['role', User::SUPERADMIN], ['name', 'like', '%'.$request->q.'%']])->orWhere([['role', User::ADMIN], ['name', 'like', '%'.$request->q.'%']])->orderBy('role')->paginate(4);
         return view('admin.user.index', $data);
     }
 

@@ -8,19 +8,9 @@ use App\Models\{Category, News, Product};
 
 class HomeController extends Controller
 {
-    public function GetAjax()
-    {
-        return view('ajax');
-    }
-    public function PostAjax(request $request)
-    {
-      
-       return response()->json($data);
-    }
-
     public function index()
     {
-        $data['news'] = News::where('status', 'show')->take(5)->get();
+        $data['news'] = News::where('status', 'show')->orderBy('created_at', 'desc')->take(5)->get();
         $data['products'] = Product::where('img', '<>', '["no-img.jpg","no-img.jpg","no-img.jpg"]')->orderBy('price')->take(8)->get();
         $data['category_800s'] = Category::where([
                                             ["categories.name", "800x800mm"],

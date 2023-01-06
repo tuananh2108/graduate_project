@@ -1,4 +1,4 @@
-@extends('backend.master.master')
+@extends('admin.master.master')
 @section('title','Sửa thuộc tính')
 @section('product')
 class="active"
@@ -10,7 +10,7 @@ class="active"
 				<li><a href="#"><svg class="glyph stroked home">
 							<use xlink:href="#stroked-home"></use>
 						</svg></a></li>
-				<li class="active">Danh mục/Thuộc tính/Sửa thuộc tính</li>
+				<li class="active">Thuộc tính/Sửa thuộc tính</li>
 			</ol>
 		</div>
 		<!--/.row-->
@@ -22,16 +22,16 @@ class="active"
 			<div class="panel panel-blue">
 				<div class="panel-heading dark-overlay">Sửa thuộc tính</div>
 				<div class="panel-body">
-					@if (session('thongbao'))
+					@if (session('message'))
 						<div class="alert alert-success" role="alert">
-							<strong>{{ session('thongbao') }}</strong>
+							<strong>{{ session('message') }}</strong>
 						</div>
 					@endif
-				<form  method="post">
+				<form method="post">
 					@csrf
 					<div class="form-group">
 					  <label for="">Tên Thuộc tính</label>
-					  <input type="text" name="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ $attr->name }}">
+					  <input type="text" name="name" class="form-control" placeholder="" aria-describedby="helpId" value="{{ $attribute->name }}">
 					  @if ($errors->has('name'))
 						<div class="alert alert-danger" role="alert">
 							<strong>{{ $errors->first('name') }}</strong>
@@ -43,9 +43,7 @@ class="active"
 				</div>
 			</div>
 			</div>
-			<!--/.col-->
 		</div>
-		<!--/.row-->
 	</div>
-	<!--/.main-->
-@stop
+
+@endsection

@@ -61,14 +61,19 @@
                                         <div class="col-md-5 col-xs-4">
                                             <div class="panel panel-default">
                                                 <div class="panel-body tabs" style="width: 500px; padding-left: 183px; margin-bottom: 80px;">
-                                                    @if ($errors->has('attr_name'))
+                                                    @if ($errors->has('attribute_name'))
                                                         <div class="alert alert-danger" role="alert">
-                                                        <strong>{{ $errors->first('attr_name') }}</strong>
+                                                        <strong>{{ $errors->first('attribute_name') }}</strong>
                                                         </div>
                                                     @endif
                                                     @if (session('message'))
                                                         <div class="alert alert-success" role="alert">
                                                             <strong>{{ session('message') }}</strong>
+                                                        </div>
+                                                    @endif
+                                                    @if (session('error-message'))
+                                                        <div class="alert alert-danger" role="alert">
+                                                            <strong>{{ session('error-message') }}</strong>
                                                         </div>
                                                     @endif
                                                     <label>Các thuộc Tính <a href="admin/product/attribute">
@@ -122,22 +127,22 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #30a5ff;">Ảnh sản phẩm</label>
-                                                    <input id="img" type="file" name="product_img" value="{{ json_decode($product->img)[0] }}" class="form-control hidden" onchange="changeImg(this)">
-                                                    <img id="avatar" class="thumbnail" width="100%" height="250px" src="{{ asset('img/product/'.json_decode($product->img)[0]) }}">
+                                                    <input id="img" type="file" name="product_img" value="{{ json_decode($product->img)[0] }}" class="form-control hidden" onchange="changeImg(this, '#avatar')">
+                                                    <img id="avatar" class="thumbnail" width="100%" height="250px" src="{{ asset('img/product/'.json_decode($product->img)[0]) }}" onclick="clickChangeImg('#img')">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #30a5ff;">Ảnh 2 của sản phẩm</label>
-                                                    <input id="img2" type="file" name="product_img2" value="{{ json_decode($product->img)[1] }}" class="form-control hidden" onchange="changeImg2(this)">
-                                                    <img id="avatar2" class="thumbnail" width="100%" height="250px" src="{{ asset('img/product/'.json_decode($product->img)[1]) }}">
+                                                    <input id="img2" type="file" name="product_img2" value="{{ json_decode($product->img)[1] }}" class="form-control hidden" onchange="changeImg(this, '#avatar2')">
+                                                    <img id="avatar2" class="thumbnail" width="100%" height="250px" src="{{ asset('img/product/'.json_decode($product->img)[1]) }}" onclick="clickChangeImg('#img2')">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label style="color: #30a5ff;">Ảnh 3 của sản phẩm</label>
-                                                    <input id="img3" type="file" name="product_img3" value="{{ json_decode($product->img)[2] }}" class="form-control hidden" onchange="changeImg3(this)">
-                                                    <img id="avatar3" class="thumbnail" width="100%" height="250px" src="{{ asset('img/product/'.json_decode($product->img)[2]) }}">
+                                                    <input id="img3" type="file" name="product_img3" value="{{ json_decode($product->img)[2] }}" class="form-control hidden" onchange="changeImg(this, '#avatar3')">
+                                                    <img id="avatar3" class="thumbnail" width="100%" height="250px" src="{{ asset('img/product/'.json_decode($product->img)[2]) }}" onclick="clickChangeImg('#img3')">
                                                 </div>
                                             </div>
                                         </div>
@@ -191,64 +196,4 @@
         </div>
     </div>
 
-@endsection
-
-@section('script')
-    @parent
-    <script>
-		function changeImg(input) {
-            //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                //Sự kiện file đã được load vào website
-                reader.onload = function (e) {
-                    //Thay đổi đường dẫn ảnh
-                    $('#avatar').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $(document).ready(function () {
-            $('#avatar').click(function () {
-                $('#img').click();
-            });
-        });  
-
-        function changeImg2(input) {
-            //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                //Sự kiện file đã được load vào website
-                reader.onload = function (e) {
-                    //Thay đổi đường dẫn ảnh
-                    $('#avatar2').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $(document).ready(function () {
-            $('#avatar2').click(function () {
-                $('#img2').click();
-            });
-        });
-
-        function changeImg3(input) {
-            //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                //Sự kiện file đã được load vào website
-                reader.onload = function (e) {
-                    //Thay đổi đường dẫn ảnh
-                    $('#avatar3').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $(document).ready(function () {
-            $('#avatar3').click(function () {
-                $('#img3').click();
-            });
-        });
-
-	</script>
 @endsection

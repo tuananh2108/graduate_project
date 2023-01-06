@@ -43,10 +43,13 @@ function ShowCategory($array, $parent, $shift)
 function attribute_value($product)
 {
 	$result = array();
-	foreach($product->values as $value)
-	{
-		$key = $value->attribute->name;
-		$result[$key][] = $value->value;
+
+	if(isset($product)) {
+		foreach($product->values as $value)
+		{
+			$key = $value->attribute->name;
+			$result[$key][] = $value->value;
+		}
 	}
 
 	return $result;
@@ -56,16 +59,18 @@ function attribute_value($product)
 function get_combinations($arrays) {
 	$result = array(array());
 
-	foreach ($arrays as $property => $property_values) {
-		$tmp = array();
-
-		foreach ($result as $result_item) {
-			foreach ($property_values as $property_value) {
-				$tmp[] = array_merge($result_item, array($property => $property_value));
+	if(isset($arrays)) {
+		foreach ($arrays as $property => $property_values) {
+			$tmp = array();
+	
+			foreach ($result as $result_item) {
+				foreach ($property_values as $property_value) {
+					$tmp[] = array_merge($result_item, array($property => $property_value));
+				}
 			}
+	
+			$result = $tmp;
 		}
-
-		$result = $tmp;
 	}
 
 	return $result;
@@ -82,45 +87,4 @@ function check_value($product, $value_check)
 	}
 
 	return false;
-}
-
-
-//check ariant
-// kiểm tra biến thể
-function check_var($product,$array)
-{
-	foreach($product->variant as $row)
-	{
-		$mang=array();
-		foreach ($row->values as $value) {
-			$mang[]=$value->id;
-		}
-		if(array_diff($mang,$array)==NULL)
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
-//input 1 san pham xac dinh và 1 array chứa giá trị thuộc tính ,out: giá theo thuộc tính
-function getprice($product,$array)
-{
-	foreach($product->variant as $row)
-	{
-			$mang=array();
-			foreach($row->values as $value)
-			{
-				$mang[]=$value->value;
-			}
-			if(array_diff($mang,$array)==NULL)
-			{
-				if($row->price==0)
-				{
-					return $product->price;
-				}
-				return $row->price;
-			}
-	}
-	return $product->price;
 }

@@ -41,14 +41,14 @@
 							<div class="row magrin-attr">
 								<div class="col-md-2 panel-blue widget-left">
 									<strong class="large">{{ $attribute->name }}</strong>
-									<a class="delete-attr" href="admin/product/attribute/delete/{{ $attribute->id }}"><i class="fas fa-times"></i></a>
+									<a class="delete-attr" href="admin/product/attribute/delete/{{ $attribute->id }}" onclick="return confirm('Bạn có chắc muốn xóa bản ghi này không?')"><i class="fas fa-times"></i></a>
 									<a class="edit-attr" href="admin/product/attribute/edit/{{ $attribute->id }}"><i class="fas fa-edit"></i></a>
 								</div>
 								<div class="col-md-10 widget-right boxattr">
 									@foreach ($attribute->values as $value)
 										<div class="text-attr">{{ $value->value }}
 											<a href="admin/product/value/edit/{{ $value->id }}" class="edit-value"><i class="fas fa-edit"></i></a>
-											<a href="admin/product/value/delete/{{ $value->id }}" class="del-value"><i class="fas fa-times"></i></a>
+											<a href="admin/product/value/delete/{{ $value->id }}" class="del-value" onclick="return confirm('Bạn có chắc muốn xóa bản ghi này không?')"><i class="fas fa-times"></i></a>
 										</div>
 									@endforeach
 								</div>		
