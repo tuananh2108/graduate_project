@@ -59,13 +59,13 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li><a class="main-menu-1" href="">Lĩnh vực khác</a>
+                                        <li><a class="main-menu-1" href="#">Lĩnh vực khác</a>
                                             <ul class="submenu">
                                                 <li><a href="{{ route('construction') }}">Công trình</a></li>
                                                 <li><a href="{{ route('cost') }}">Bảng giá sửa chữa và cải tạo nhà</a></li>
                                             </ul>
                                         </li>
-                                        <li><a class="main-menu-1" href="{{ route('project') }}">dự án</a></li>
+                                        <li><a class="main-menu-1" href="{{ route('project') }}">Dự án</a></li>
                                         <li><a class="main-menu-1" href="{{ route('contact') }}">Liên hệ</a></li>
                                     </ul>
                                 </nav>
@@ -88,32 +88,33 @@
                             <div class="mobile-menu">
                                 <nav id="mobile-menu-active">
                                     <ul class="menu-overflow">
-                                        <li><a href="#">HOME</a></li>
-                                        <li><a href="#">Sản phẩm</a>
+                                        <li><a href="/">Trang chủ</a></li>
+                                        <li><a href="{{ route('product') }}">Sản phẩm</a>
                                             <ul>
-                                                <li>
-                                                    <a href="#">Gạch lát nền</a>
-                                                    <ul>
-                                                        <li><a href="#">800x800mm</a></li>
-                                                        <li><a href="#">800x800mm</a></li>
-                                                        <li><a href="#">800x800mm</a></li>
-                                                        <li><a href="#">800x800mm</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Gạch ốp</a>
-                                                </li>
+                                                <?php $categories = App\Models\Category::where('parent', '0')->get(); ?>
+                                                @foreach ($categories as $category)
+                                                    <li>
+                                                        <a href="{{ route('product.by.category', $category->id) }}">{{ $category->name }}</a>
+                                                        <?php $category_child = App\Models\Category::where('parent', $category->id)->get(); ?>
+                                                        @if (count($category_child) > 0)
+                                                            <ul>
+                                                                @foreach ($category_child as $rc)
+                                                                    <li><a href="{{ route('product.by.category', $rc->id) }}">{{ $rc->name }}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li><a href="#">Lĩnh vực khác</a>
                                             <ul>
-                                                <li><a href="#">Công trình</a></li>
-                                                <li><a href="#">Công trình</a></li>
-                                                <li><a href="#">Công trình</a></li>
+                                                <li><a href="{{ route('construction') }}">Công trình</a></li>
+                                                <li><a href="{{ route('cost') }}">Bảng giá sửa chữa và cải tạo nhà</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Dự án</a></li>
-                                        <li><a href="#">Liên hệ</a></li>
+                                        <li><a href="{{ route('project') }}">Dự án</a></li>
+                                        <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                                     </ul>
                                 </nav>
                             </div>

@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('status', ['active', 'pending', 'delivering', 'delivered', 'cancel', 'inactive'])->default('active');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

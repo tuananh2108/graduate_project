@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['superadmin', 'admin', 'client', 'guest'])->default('guest');
             $table->string('remember_token', 100)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

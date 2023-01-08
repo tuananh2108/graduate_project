@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use Sortable;
+    use Notifiable, SoftDeletes, Sortable;
 
     const SUPERADMIN = 'superadmin';
     const ADMIN = 'admin';

@@ -30,78 +30,90 @@
 	<div class="food-category food-category-col pt-100 pb-60">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-4">
-					<div class="single-food-category cate-padding-1 text-center mb-30">
-						<a href="{{ route('product.by.category', $category_800s->id) }}">
-							<div class="single-food-hover-2">
-								<img src="{{ asset('client/images/800.jpg') }}" alt="">
-							</div>
-							<div class="single-food-content">
-								<h3>Gạch lát nền 800x800</h3>
-							</div>
-						</a>
+				@if(isset($category_800s))
+					<div class="col-lg-4 col-md-4">
+						<div class="single-food-category cate-padding-1 text-center mb-30">
+							<a href="{{ route('product.by.category', $category_800s->id) }}">
+								<div class="single-food-hover-2">
+									<img src="{{ asset('client/images/800.jpg') }}" alt="">
+								</div>
+								<div class="single-food-content">
+									<h3>Gạch lát nền 800x800</h3>
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-4">
-					<div class="single-food-category cate-padding-1 text-center mb-30">
-						<a href="{{ route('product.by.category', $category_600s->id) }}">
-							<div class="single-food-hover-2">
-								<img src="{{ asset('client/images/600.jpg') }}" alt="">
-							</div>
-							<div class="single-food-content">
-								<h3>Gạch lát nền 600x600</h3>
-							</div>
-						</a>
+				@endif
+				@if(isset($category_600s))
+					<div class="col-lg-4 col-md-4">
+						<div class="single-food-category cate-padding-1 text-center mb-30">
+							<a href="{{ route('product.by.category', $category_600s->id) }}">
+								<div class="single-food-hover-2">
+									<img src="{{ asset('client/images/600.jpg') }}" alt="">
+								</div>
+								<div class="single-food-content">
+									<h3>Gạch lát nền 600x600</h3>
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-4">
-					<div class="single-food-category cate-padding-1 text-center mb-30">
-						<a href="{{ route('product.by.category', $category_500s->id) }}">
-							<div class="single-food-hover-2">
-								<img src="{{ asset('client/images/tintuc3.jpg') }}" alt="">
-							</div>
-							<div class="single-food-content">
-								<h3>Gạch lát nền 500x500</h3>
-							</div>
-						</a>
+				@endif
+				@if(isset($category_500s))
+					<div class="col-lg-4 col-md-4">
+						<div class="single-food-category cate-padding-1 text-center mb-30">
+							<a href="{{ route('product.by.category', $category_500s->id) }}">
+								<div class="single-food-hover-2">
+									<img src="{{ asset('client/images/tintuc3.jpg') }}" alt="">
+								</div>
+								<div class="single-food-content">
+									<h3>Gạch lát nền 500x500</h3>
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-4">
-					<div class="single-food-category cate-padding-1 text-center mb-30">
-						<a href="{{ route('product.by.category', $category_go_thanh->id) }}">
-							<div class="single-food-hover-2">
-								<img src="{{ asset('client/images/gothanh.jpg') }}" alt="">
-							</div>
-							<div class="single-food-content">
-								<h3>Gạch gỗ thanh 180x800</h3>
-							</div>
-						</a>
+				@endif
+				@if(isset($category_go_thanh))
+					<div class="col-lg-4 col-md-4">
+						<div class="single-food-category cate-padding-1 text-center mb-30">
+							<a href="{{ route('product.by.category', $category_go_thanh->id) }}">
+								<div class="single-food-hover-2">
+									<img src="{{ asset('client/images/gothanh.jpg') }}" alt="">
+								</div>
+								<div class="single-food-content">
+									<h3>Gạch gỗ thanh 180x800</h3>
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-4">
-					<div class="single-food-category cate-padding-1 text-center mb-30">
-						<a href="{{ route('product.by.category', $category_op_400s->id) }}">
-							<div class="single-food-hover-2">
-								<img src="{{ asset('client/images/400800.jpg') }}" alt="">
-							</div>
-							<div class="single-food-content">
-								<h3>Gạch ốp 400x800</h3>
-							</div>
-						</a>
+				@endif
+				@if(isset($category_op_400s))
+					<div class="col-lg-4 col-md-4">
+						<div class="single-food-category cate-padding-1 text-center mb-30">
+							<a href="{{ route('product.by.category', $category_op_400s->id) }}">
+								<div class="single-food-hover-2">
+									<img src="{{ asset('client/images/400800.jpg') }}" alt="">
+								</div>
+								<div class="single-food-content">
+									<h3>Gạch ốp 400x800</h3>
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-4">
-					<div class="single-food-category cate-padding-1 text-center mb-30">
-						<a href="{{ route('product.by.category', $category_op_300s->id) }}">
-							<div class="single-food-hover-2">
-								<img src="{{ asset('client/images/300600.jpg') }}" alt="">
-							</div>
-							<div class="single-food-content">
-								<h3>Gạch ốp 300x600</h3>
-							</div>
-						</a>
+				@endif
+				@if(isset($category_op_300s))
+					<div class="col-lg-4 col-md-4">
+						<div class="single-food-category cate-padding-1 text-center mb-30">
+							<a href="{{ route('product.by.category', $category_op_300s->id) }}">
+								<div class="single-food-hover-2">
+									<img src="{{ asset('client/images/300600.jpg') }}" alt="">
+								</div>
+								<div class="single-food-content">
+									<h3>Gạch ốp 300x600</h3>
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
+				@endif
 			</div>
 		</div>
 	</div>

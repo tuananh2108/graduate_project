@@ -45,14 +45,9 @@
                                     <div class="form-group">
                                         <label for="category-name">Tên Danh mục</label>
                                         <input type="text" class="form-control" name="name" id="category-name" placeholder="Tên danh mục mới">
-
-                                        @if($errors->has('name'))
-                                            <div class="alert bg-danger" role="alert">
-                                                <svg class="glyph stroked cancel">
-                                                    <use xlink:href="#stroked-cancel"></use>
-                                                </svg>{{ $errors->first('name') }}<a href="{{ asset('admin/category') }}" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-                                            </div>
-                                        @endif
+                                        @if ($errors->has('name'))
+											<i><span style="color:red">{{ $errors->first('name') }}</span></i>
+										@endif
                                     </div>
                                     <button type="submit" class="btn btn-primary">Thêm danh mục</button>
                                 </form>

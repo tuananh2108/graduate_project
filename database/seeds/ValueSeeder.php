@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Attribute;
 
 class ValueSeeder extends Seeder
 {
@@ -12,15 +13,15 @@ class ValueSeeder extends Seeder
     public function run()
     {
         DB::table('values')->insert([
-            ['value' => '150x800', 'attribute_id' => 1],
-            ['value' => '300x300', 'attribute_id' => 1],
-            ['value' => '300x600', 'attribute_id' => 1],
-            ['value' => '600x600', 'attribute_id' => 1],
-            ['value' => '800x800', 'attribute_id' => 1],
-            ['value' => 'CMC', 'attribute_id' => 2],
-            ['value' => 'PRATO', 'attribute_id' => 2],
-            ['value' => 'LUXURIO', 'attribute_id' => 2],
-            ['value' => 'LOUCIA', 'attribute_id' => 2],
+            ['value' => '150x800', 'attribute_id' => Attribute::where('name', 'Kích thước')->first()->id],
+            ['value' => '300x300', 'attribute_id' => Attribute::where('name', 'Kích thước')->first()->id],
+            ['value' => '300x600', 'attribute_id' => Attribute::where('name', 'Kích thước')->first()->id],
+            ['value' => '600x600', 'attribute_id' => Attribute::where('name', 'Kích thước')->first()->id],
+            ['value' => '800x800', 'attribute_id' => Attribute::where('name', 'Kích thước')->first()->id],
+            ['value' => 'CMC', 'attribute_id' => Attribute::where('name', 'Hãng sản xuất')->first()->id],
+            ['value' => 'PRATO', 'attribute_id' => Attribute::where('name', 'Hãng sản xuất')->first()->id],
+            ['value' => 'LUXURIO', 'attribute_id' => Attribute::where('name', 'Hãng sản xuất')->first()->id],
+            ['value' => 'LOUCIA', 'attribute_id' => Attribute::where('name', 'Hãng sản xuất')->first()->id],
         ]);
     }
 }

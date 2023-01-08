@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Kyslik\ColumnSortable\Sortable;
 
 class Product extends Model
 {
-    use Sortable;
+    use SoftDeletes, Sortable;
 
     protected $table = 'products';
     const AVAILABLE = 'available';
